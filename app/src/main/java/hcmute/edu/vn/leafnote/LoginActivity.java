@@ -3,16 +3,60 @@ package hcmute.edu.vn.leafnote;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
-public class LoginActivity extends AppCompatActivity {
+import hcmute.edu.vn.leafnote.database.DatabaseConnection;
+import hcmute.edu.vn.leafnote.entity.Users;
 
+public class LoginActivity extends AppCompatActivity {
+    EditText edtUsername, edtPassword;
+    Button btnDangNhap;
+    SharedPreferences pref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        AnhXa();
+        pref = getSharedPreferences("login",MODE_PRIVATE);
+        btnDangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Login();
+            }
+        });
+
+    }
+
+    private void AnhXa(){
+        edtUsername = (EditText) findViewById(R.id.edtLoginUsername);
+        edtPassword = (EditText) findViewById(R.id.edtLoginPassword);
+        btnDangNhap = (Button) findViewById(R.id.btnLogin);
+    }
+
+    private void Login() {
+        String username = edtUsername.getText().toString().trim();
+        String password = edtPassword.getText().toString().trim();
+        if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+            Toast.makeText(this, "Vui lòng điền đủ thông tin đăng nhập", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        Users user = DatabaseConnection.getInstance(this).userDao().Login(username, password);
+        if (user == null) {
+            Toast.makeText(this, "Username hoặc Password chưa đúng", Toast.LENGTH_SHORT).show();
+        } else {
+            SharedPreferences.Editor editor = pref.edit();
+            editor.putString("username", username);
+            editor.putString("password", password);
+            editor.commit();
+            Intent intent = new Intent(LoginActivity.this, NoteActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void loginGoogle(View view) {
@@ -28,9 +72,5 @@ public class LoginActivity extends AppCompatActivity {
         startActivity(linkSignUp);
     }
 
-    public void loginSuccess(View view) {
-        Intent linkHome = new Intent(this, MainActivity.class);
-        startActivity(linkHome);
-        //Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show();
-    }
+
 }

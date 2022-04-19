@@ -39,13 +39,13 @@
                 android:orientation="vertical">
 
                 <EditText
-                    android:id="@+id/edtLoginEmail"
+                    android:id="@+id/edtLoginUsername"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:drawableStart="@drawable/ic_baseline_email_24"
                     android:drawablePadding="10dp"
                     android:ems="10"
-                    android:hint="Email"
+                    android:hint="Tài khoản"
                     android:background="@drawable/shadow"
                     android:inputType="textEmailAddress"
                     android:paddingTop="10dp"
@@ -97,12 +97,11 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btnLogin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/radius"
                 android:gravity="center"
-                android:onClick="loginSuccess"
                 android:padding="15dp"
                 android:text="Đăng nhập"
                 android:textAllCaps="false"
