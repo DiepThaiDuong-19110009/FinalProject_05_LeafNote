@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LeafNote">
         <activity
-            android:name=".NoteSlideTabActivity"
+            android:name=".SettingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ShowAllNotesActivity"
             android:exported="false" />
         <activity
             android:name=".DeleteActivity"

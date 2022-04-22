@@ -41,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
     //Xem tất cả note
     LinearLayout allNotes;
 
+    //Mở cài đặt
+    TextView setting;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +68,9 @@ public class MainActivity extends AppCompatActivity {
 
         //Open allNotes
         setOpenAllNotes();
+
+        //Open setting
+        setOpenSetting();
 
 
         //Nhận ảnh
@@ -111,6 +117,20 @@ public class MainActivity extends AppCompatActivity {
 
         //Open allNotes
         allNotes = (LinearLayout) findViewById(R.id.allNotes);
+
+        //Open Setting
+        setting = (TextView) findViewById(R.id.txtSetting);
+    }
+
+    //Mở cài đặt
+    private void setOpenSetting(){
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent setting = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(setting);
+            }
+        });
     }
 
     //Mở new note trên Phần ghi chú
@@ -151,7 +171,7 @@ public class MainActivity extends AppCompatActivity {
         allNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent allNotes = new Intent(MainActivity.this, NoteSlideTabActivity.class);
+                Intent allNotes = new Intent(MainActivity.this, ShowAllNotesActivity.class);
                 startActivity(allNotes);
             }
         });
