@@ -23,7 +23,11 @@ public class NoteSlideTabActivity extends AppCompatActivity {
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPagerAdapter.addFragment(new TextNoteFragment(), "Văn bản");
-        viewPagerAdapter.addFragment(new PhotoNoteFragment(), "Ảnh");
+        viewPagerAdapter.addFragment(new PhotoNoteFragment(), "Hình ảnh");
+        viewPagerAdapter.addFragment(new VideoNoteFragment(), "Quay phim");
+        viewPagerAdapter.addFragment(new DrawNoteFragment(), "Phát thảo");
+        viewPagerAdapter.addFragment(new AttachNoteFragment(), "Đính kèm");
+        viewPagerAdapter.addFragment(new RecordNoteFragment(), "Bản ghi âm");
 
         viewPager.setAdapter(viewPagerAdapter);
     }
