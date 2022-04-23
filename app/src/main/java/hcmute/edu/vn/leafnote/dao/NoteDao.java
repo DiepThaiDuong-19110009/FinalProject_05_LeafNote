@@ -19,7 +19,7 @@ public interface NoteDao {
     List<Note> getAll();
 
     @Query("SELECT *FROM Note")
-    List<Note>searchNote(String search);
+    List<Note>searchNote();
     @Insert
     void insert(Note note);
     @Update

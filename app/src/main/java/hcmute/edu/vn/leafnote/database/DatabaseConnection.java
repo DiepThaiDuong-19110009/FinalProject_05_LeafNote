@@ -6,6 +6,7 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import hcmute.edu.vn.leafnote.dao.NoteDao;
 import hcmute.edu.vn.leafnote.dao.UserDao;
 import hcmute.edu.vn.leafnote.entity.Note;
 import hcmute.edu.vn.leafnote.entity.Users;
@@ -23,5 +24,5 @@ public abstract class DatabaseConnection extends RoomDatabase {
         return instance;
     }
     public abstract UserDao userDao();
-
+    public abstract NoteDao noteDao();
 }

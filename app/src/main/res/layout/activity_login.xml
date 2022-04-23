@@ -47,7 +47,7 @@
                     android:ems="10"
                     android:hint="Tài khoản"
                     android:background="@drawable/shadow"
-                    android:inputType="textEmailAddress"
+                    android:inputType="text"
                     android:paddingTop="10dp"
                     android:paddingBottom="10dp"
                     android:paddingLeft="10dp"

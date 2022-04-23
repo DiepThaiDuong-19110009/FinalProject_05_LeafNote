@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             editor.putString("username", username);
             editor.putString("password", password);
             editor.commit();
-            Intent intent = new Intent(LoginActivity.this, NoteActivity.class);
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }
     }

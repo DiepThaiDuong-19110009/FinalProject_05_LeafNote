@@ -75,15 +75,14 @@
     </ImageView>
 
     <ImageView
+        android:id="@+id/ib_play"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:id="@+id/ib_play"
-        android:src="@drawable/recording_play"
         android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
         android:layout_marginBottom="75dp"
         android:layout_toEndOf="@id/ib_record"
-        android:layout_marginStart="20dp"
-        android:background="@android:color/transparent">
-    </ImageView>
+        android:background="@android:color/transparent"
+        android:src="@drawable/recording_play"></ImageView>
 
 </RelativeLayout>

@@ -15,15 +15,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hcmute.edu.vn.leafnote.R;
+import hcmute.edu.vn.leafnote.entity.Note;
 import hcmute.edu.vn.leafnote.model.ContactRowNote;
 
-public class CustomRowNoteAdapter extends ArrayAdapter<ContactRowNote> {
+public class CustomRowNoteAdapter extends ArrayAdapter<Note> {
 
     private Context context;
     private int resource;
-    private ArrayList<ContactRowNote> arrContactRowNote;
+    private List<Note> arrContactRowNote;
 
-    public CustomRowNoteAdapter(@NonNull Context context, int resource, @NonNull ArrayList<ContactRowNote> objects) {
+    public CustomRowNoteAdapter(@NonNull Context context, int resource, @NonNull List<Note> objects) {
         super(context, resource, objects);
         this.context = context;
         this.resource = resource;
@@ -40,11 +41,11 @@ public class CustomRowNoteAdapter extends ArrayAdapter<ContactRowNote> {
         TextView txtContent = (TextView) convertView.findViewById(R.id.txtContentRowNote);
         TextView txtDate = (TextView) convertView.findViewById(R.id.txtDateRowNote);
 
-        ContactRowNote contactRowNote = arrContactRowNote.get(position);
+        Note contactRowNote = arrContactRowNote.get(position);
 
-        txtTittle.setText(contactRowNote.getmTittleRowNote());
-        txtContent.setText(contactRowNote.getmContentRowNote());
-        txtDate.setText(contactRowNote.getmDateRowNote());
+        txtTittle.setText(contactRowNote.getTitle());
+        txtContent.setText(contactRowNote.getContent());
+        txtDate.setText(contactRowNote.getCreated_at());
 
         return convertView;
     }

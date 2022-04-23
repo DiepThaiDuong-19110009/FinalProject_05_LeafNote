@@ -29,7 +29,7 @@ import java.util.concurrent.Executors;
 public class RecordActivity extends AppCompatActivity {
 
     private static final int REQUEST_AUDIO_PERMISSION_CODE = 101;
-    MediaRecorder mediaRecorder;
+    MediaRecorder myAudioRecorder;
     MediaPlayer mediaPlayer;
     ImageView imgRecord;
     ImageView imgPlay;
@@ -58,114 +58,37 @@ public class RecordActivity extends AppCompatActivity {
         txtRecordingPath = findViewById(R.id.tv_recording_path);
         imgSimpleBg = findViewById(R.id.iv_simple_bg);
         lavPlaying = findViewById(R.id.lav_playing);
-        mediaPlayer = new MediaPlayer();
+        //mediaPlayer = new MediaPlayer();
 
-        imgRecord.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (checkRecordingPermission()) {
-                    if (!isRecording) {
-                        isRecording = true;
-                        executorService.execute(new Runnable() {
-                            @Override
-                            public void run() {
-                                mediaRecorder = new MediaRecorder();
-                                mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-                                mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-                                mediaRecorder.setOutputFile(getRecordingFilePath());
-                                path = getRecordingFilePath();
-                                mediaRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+    }
+    private void startRecord(MediaRecorder myRecorder, String outputFile) {
+        myRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
+        myRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
+        myRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
+        myRecorder.setOutputFile(outputFile);
+        try {
+            myRecorder.prepare();
 
-                                try {
-                                    mediaRecorder.prepare();
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-
-                                mediaRecorder.start();
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        imgSimpleBg.setVisibility(View.VISIBLE);
-                                        lavPlaying.setVisibility(View.GONE);
-                                        txtRecordingPath.setText(getRecordingFilePath());
-                                        playableSeconds = 0;
-                                        seconds = 0;
-                                        dummySeconds = 0;
-                                        imgRecord.setImageDrawable(ContextCompat.getDrawable(RecordActivity.this, R.drawable.recording_active));
-                                        runTimer();
-                                    }
-                                });
-                            }
-                        });
-                    } else {
-                        executorService.execute(new Runnable() {
-                            @Override
-                            public void run() {
-                                mediaRecorder.stop();
-                                mediaRecorder.release();
-                                mediaRecorder = null;
-                                playableSeconds = seconds;
-                                dummySeconds = seconds;
-                                seconds = 0;
-                                isRecording = false;
-
-                                runOnUiThread(new Runnable() {
-                                    @Override
-                                    public void run() {
-                                        imgSimpleBg.setVisibility(View.VISIBLE);
-                                        lavPlaying.setVisibility(View.GONE);
-                                        handler.removeCallbacksAndMessages(null);
-                                        imgRecord.setImageDrawable(ContextCompat.getDrawable(RecordActivity.this, R.drawable.recording_in_active));
-                                    }
-                                });
-                            }
-                        });
-                    }
-                } else {
-                    requestRecordingPermission();
-                }
-            }
-        });
-
-        imgPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!isPlaying) {
-                    if (path != null) {
-                        try {
-                            mediaPlayer.setDataSource(getRecordingFilePath());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    } else {
-                        Toast.makeText(getApplicationContext(), "No Recording Present", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    try {
-                        mediaPlayer.prepare();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    mediaPlayer.start();
-                    imgPlay.setImageDrawable(ContextCompat.getDrawable(RecordActivity.this, R.drawable.recording_pause));
-                    imgSimpleBg.setVisibility(View.GONE);
-                    lavPlaying.setVisibility(View.VISIBLE);
-                    runTimer();
-                } else {
-                    mediaPlayer.stop();
-                    mediaPlayer.release();
-                    mediaPlayer = null;
-                    mediaPlayer = new MediaPlayer();
-                    isPlaying = false;
-                    seconds = 0;
-                    handler.removeCallbacksAndMessages(null);
-                    imgSimpleBg.setVisibility(View.VISIBLE);
-                    lavPlaying.setVisibility(View.GONE);
-                    imgPlay.setImageDrawable(ContextCompat.getDrawable(RecordActivity.this, R.drawable.recording_play));
-                }
-            }
-        });
+        } catch (IllegalStateException ise) {
+            // make something ...
+        } catch (IOException ioe) {
+            // make something
+        }
+        myRecorder.start();
+        //imgPlay.setEnabled(false);
+        //stop.setEnabled(true);
+        Toast.makeText(getApplicationContext(), "Recording started", Toast.LENGTH_LONG)
+                .show();
+    }
+    public void stopRecord(MediaRecorder myRecorder){
+        myRecorder.stop();
+        myRecorder.release();
+        myRecorder = null;
+        //start.setEnabled(true);
+        //stop.setEnabled(false);
+        //play.setEnabled(true);
+        Toast.makeText(getApplicationContext(), "Audio Recorder successfully",
+                Toast.LENGTH_LONG).show();
     }
 
     private void runTimer() {
@@ -222,7 +145,7 @@ public class RecordActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_AUDIO_PERMISSION_CODE) {
             if (grantResults.length > 1) {
-                boolean permissonToRecord = grantResults[0] == PackageManager.PERMISSION_DENIED;
+                boolean permissonToRecord = grantResults[0] == PackageManager.PERMISSION_GRANTED;
                 if (permissonToRecord) {
                     Toast.makeText(getApplicationContext(), "Permission given", Toast.LENGTH_SHORT).show();
                 } else {
@@ -233,9 +156,6 @@ public class RecordActivity extends AppCompatActivity {
     }
 
     private String getRecordingFilePath() {
-        ContextWrapper contextWrapper = new ContextWrapper(getApplicationContext());
-        File music = contextWrapper.getExternalFilesDir(Environment.DIRECTORY_MUSIC);
-        File file = new File(music, "testfile" + ".mp3");
-        return file.getPath();
+      return this.getExternalFilesDir("/").getAbsolutePath()+"/recording.3gp";
     }
 }
