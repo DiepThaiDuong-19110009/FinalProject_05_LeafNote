@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="10dp"
+    android:background="@color/white"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <EditText
+            android:id="@+id/edtTitleRowNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:text="" />
+        <EditText
+            android:id="@+id/edtContentRowNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="10dp"
+            android:paddingBottom="30dp"
+            android:textSize="16sp"
+            android:text="" />
+        <EditText
+            android:id="@+id/txtDateRowNote"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text=""
+            android:paddingBottom="10dp"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btnCapNhat"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/radius_white_2"
+        android:padding="5dp"
+        android:drawableStart="@drawable/ic_baseline_mode_edit_24_note"
+        android:text="Cập nhật"
+        android:textStyle="bold"
+        android:textColor="@color/mainColor"
+        android:layout_marginBottom="10dp"
+        android:gravity="center" />
+
+    <Button
+        android:id="@+id/btnXoa"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/radius"
+        android:text="Xóa"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textColor="@color/white"
+        android:drawableStart="@drawable/ic_baseline_delete_24" />
+    </LinearLayout>
+</LinearLayout>
