@@ -16,6 +16,10 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
+
+import hcmute.edu.vn.leafnote.database.DatabaseConnection;
+import hcmute.edu.vn.leafnote.entity.Note;
 
 public class MainActivity extends AppCompatActivity {
     //Open Search
@@ -42,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout allNotes;
 
     //Mở cài đặt
-    TextView setting;
+    TextView setting, txtTitle, txtDate,txtTitle2,txtDate2, txtSoLuong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,30 @@ public class MainActivity extends AppCompatActivity {
 
         //Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
         addControl();
+        List<Note> listNote= DatabaseConnection.getInstance(this).noteDao().getLastRow();
+        if(listNote.isEmpty())
+        {
+            txtTitle.setText("Chưa có nội dung");
+            txtDate.setText("");
+            txtTitle2.setText("Chưa có nội dung");
+            txtDate2.setText("");
+            txtSoLuong.setText("Chưa có ghi chú");
+        }
+        else if(listNote.size()<2){
+            txtTitle.setText(listNote.get(0).getTitle());
+            txtDate.setText(listNote.get(0).getCreated_at());
+            txtTitle2.setText("Chưa có nội dung");
+            txtDate2.setText("");
+            txtSoLuong.setText("("+listNote.size()+")");
+        }
+        else
+        {
+            txtTitle.setText(listNote.get(0).getTitle());
+            txtDate.setText(listNote.get(0).getCreated_at());
+            txtTitle2.setText(listNote.get(1).getTitle());
+            txtDate2.setText(listNote.get(1).getCreated_at());
+            txtSoLuong.setText("("+listNote.size()+")");
+        }
         setRealTime();
         setDay();
 
@@ -120,6 +148,11 @@ public class MainActivity extends AppCompatActivity {
 
         //Open Setting
         setting = (TextView) findViewById(R.id.txtSetting);
+        txtTitle=(TextView) findViewById(R.id.txtTitle);
+        txtDate=(TextView) findViewById(R.id.txtDate);
+        txtTitle2=(TextView) findViewById(R.id.txtTitle2);
+        txtDate2=(TextView) findViewById(R.id.txtDate2);
+        txtSoLuong=(TextView)findViewById(R.id.txtSoLuong);
     }
 
     //Mở cài đặt

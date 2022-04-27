@@ -101,11 +101,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingLeft="5dp"
-                    android:text="Sổ tay đầu tiên" />
+                    android:textSize="20sp"
+                    android:text="Ghi chú " />
             </LinearLayout>
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/edtTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
@@ -126,14 +127,15 @@
                     android:orientation="vertical" >
 
                     <EditText
-                        android:id="@+id/editTextTextPersonName4"
+                        android:id="@+id/edtContent"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:ems="10"
                         android:paddingTop="15dp"
-                        android:textSize="16dp"
+                        android:textSize="20sp"
                         android:background="@color/white"
                         android:hint="Bắt đầu viết"
+
                         android:inputType="textMultiLine"/>
                 </LinearLayout>
             </ScrollView>

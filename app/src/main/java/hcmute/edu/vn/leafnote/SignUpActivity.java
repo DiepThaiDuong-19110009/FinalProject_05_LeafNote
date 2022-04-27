@@ -91,9 +91,4 @@ public class SignUpActivity extends AppCompatActivity {
         edtEmail.setText("");
     }
 
-//    public void signUpSuccess(View view) {
-//        Toast.makeText(this, "Đăng ký thành công", Toast.LENGTH_SHORT).show();
-//        Intent linkLogin = new Intent(this, LoginActivity.class);
-//        startActivity(linkLogin);
-//    }
 }

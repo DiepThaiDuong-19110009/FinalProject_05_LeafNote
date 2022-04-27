@@ -245,28 +245,30 @@
                         <LinearLayout
                             android:layout_width="200dp"
                             android:layout_height="match_parent"
-                            android:layout_margin="20dp"
-                            android:padding="10dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="20dp"
                             android:background="@drawable/shadow"
-                            android:orientation="vertical">
+                            android:orientation="vertical"
+                            android:padding="10dp">
 
                             <TextView
-                                android:id="@+id/textView13"
+                                android:id="@+id/txtTitle"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="top"
                                 android:padding="10dp"
-                                android:text="Ghi chú chưa có tên"
                                 android:textSize="20dp"
-                                android:textStyle="bold"/>
+                                android:textStyle="bold" />
 
                             <TextView
-                                android:id="@+id/textView14"
+                                android:id="@+id/txtDate"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="10dp"
-                                android:textStyle="bold"
-                                android:text="30/03/2022" />
+                                android:text=""
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:id="@+id/textView15"
@@ -286,22 +288,22 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/textView16"
+                                android:id="@+id/txtTitle2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="top"
                                 android:padding="10dp"
-                                android:text="Ghi chú bài giảng Android"
+                                android:text=""
                                 android:textSize="20dp"
                                 android:textStyle="bold"/>
 
                             <TextView
-                                android:id="@+id/textView17"
+                                android:id="@+id/txtDate2"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:padding="10dp"
                                 android:textStyle="bold"
-                                android:text="31/03/2022" />
+                                android:text="" />
 
                             <TextView
                                 android:id="@+id/textView18"
@@ -350,14 +352,14 @@
                                     android:textStyle="bold" />
 
                                 <TextView
-                                    android:id="@+id/textView21"
+                                    android:id="@+id/txtSoLuong"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingTop="10dp"
                                     android:paddingLeft="5dp"
                                     android:textSize="16dp"
                                     android:gravity="center"
-                                    android:text="(2)" />
+                                    android:text="" />
                             </LinearLayout>
 
                         </LinearLayout>
