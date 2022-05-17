@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import hcmute.edu.vn.leafnote.database.DatabaseConnection;
@@ -17,6 +18,7 @@ import hcmute.edu.vn.leafnote.entity.Users;
 public class LoginActivity extends AppCompatActivity {
     EditText edtUsername, edtPassword;
     Button btnDangNhap;
+    TextView txtForgotPassword;
     SharedPreferences pref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +32,20 @@ public class LoginActivity extends AppCompatActivity {
                 Login();
             }
         });
-
+        txtForgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(LoginActivity.this,ForgotActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void AnhXa(){
         edtUsername = (EditText) findViewById(R.id.edtLoginUsername);
         edtPassword = (EditText) findViewById(R.id.edtLoginPassword);
         btnDangNhap = (Button) findViewById(R.id.btnLogin);
+        txtForgotPassword=(TextView) findViewById(R.id.txtForgotPassword);
     }
 
     private void Login() {
@@ -56,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
             editor.commit();
             Intent intent = new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 

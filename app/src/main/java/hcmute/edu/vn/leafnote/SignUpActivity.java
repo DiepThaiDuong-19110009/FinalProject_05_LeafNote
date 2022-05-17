@@ -14,6 +14,7 @@ import android.widget.Toast;
 import hcmute.edu.vn.leafnote.dao.UserDao;
 import hcmute.edu.vn.leafnote.database.DatabaseConnection;
 import hcmute.edu.vn.leafnote.entity.Users;
+import hcmute.edu.vn.leafnote.service.JavaMail;
 
 public class SignUpActivity extends AppCompatActivity {
     EditText edtUsername, edtPassword, edtName, edtEmail, edtConfirm;
@@ -73,22 +74,25 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(this, "Tài khoản đã tồn tại", Toast.LENGTH_SHORT).show();
             return;
         }
-
+        Users a=DatabaseConnection.getInstance(this).userDao().FindUserByEmail(email);
+        if(a!=null){
+            Toast.makeText(this, "Email đã tồn tại", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Users user = new Users(username, password, name, email);
-//        DatabaseConnection db = Room.databaseBuilder(getApplicationContext(), DatabaseConnection.class, "leafnote.db")
-//                .allowMainThreadQueries()
-//                .build();
-//        UserDao userDao = db.userDao();
-//        userDao.insert(users);
-//        Toast.makeText(this, users.toString(), Toast.LENGTH_LONG).show();
+//
+
         DatabaseConnection.getInstance(this).userDao().insert(user);
         Toast.makeText(this, "Đăng ký thành công", Toast.LENGTH_LONG).show();
         Intent intent=new Intent(SignUpActivity.this,LoginActivity.class);
         startActivity(intent);
+        JavaMail.sendMail(email,"Đăng ký tài khoản thành công",
+                "Bạn vừa đăng ký thành công tài khoản trên leafapp.\nChân thành cảm ơn bạn đã quan tâm và sử dụng app. Chúc bạn ngày mới vui vẻ.\nTrân trọng!");
         edtUsername.setText("");
         edtPassword.setText("");
         edtName.setText("");
         edtEmail.setText("");
+        edtConfirm.setText("");
     }
 
 }

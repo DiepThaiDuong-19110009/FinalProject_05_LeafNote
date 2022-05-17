@@ -1,24 +1,25 @@
 package hcmute.edu.vn.leafnote;
 
-import static hcmute.edu.vn.leafnote.R.color.mainColor;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
-import java.lang.reflect.Array;
+import java.util.List;
+
+import hcmute.edu.vn.leafnote.database.DatabaseConnection;
+import hcmute.edu.vn.leafnote.entity.Note;
 
 public class ChangeBackgroundActivity extends AppCompatActivity {
     //Check Update
@@ -274,4 +275,5 @@ public class ChangeBackgroundActivity extends AppCompatActivity {
         //Cập nhật ảnh nền
         updateChangeBackground = (TextView) findViewById(R.id.txtUpdateChangeBackground);
     }
+
 }

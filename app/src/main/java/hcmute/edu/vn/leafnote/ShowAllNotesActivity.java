@@ -3,25 +3,22 @@ package hcmute.edu.vn.leafnote;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
 
-import hcmute.edu.vn.leafnote.adapter.CustomRowNoteAdapter;
+import hcmute.edu.vn.leafnote.adapter.NoteAdapter;
 import hcmute.edu.vn.leafnote.database.DatabaseConnection;
 import hcmute.edu.vn.leafnote.entity.Note;
-import hcmute.edu.vn.leafnote.model.ContactRowNote;
+import hcmute.edu.vn.leafnote.entity.Users;
 
 public class ShowAllNotesActivity extends AppCompatActivity {
 
@@ -35,9 +32,14 @@ public class ShowAllNotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_all_notes);
         AnhXa();
+        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
 
-        List<Note> noteList = DatabaseConnection.getInstance(this).noteDao().getAll();
-        NoteAdapter adapter = new NoteAdapter(this, R.layout.custom_note, noteList);
+        String username = pref.getString("username", "");
+
+        Users u = DatabaseConnection.getInstance(this).userDao().FindUserByUserName(username);
+
+        List<Note> noteList = DatabaseConnection.getInstance(this).noteDao().getAllText(u.getId());
+        NoteAdapter adapter = new NoteAdapter(ShowAllNotesActivity.this, R.layout.custom_note, noteList);
         lvShowAllNote.setAdapter(adapter);
 
         txtDone.setOnClickListener(new View.OnClickListener() {
@@ -51,16 +53,15 @@ public class ShowAllNotesActivity extends AppCompatActivity {
         btnTim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String search=edtTimKiem.getText().toString().trim();
-                if(TextUtils.isEmpty(search)){
+                String search = edtTimKiem.getText().toString().trim();
+                if (TextUtils.isEmpty(search)) {
                     Toast.makeText(ShowAllNotesActivity.this, "Vui lòng nhập từ khóa tìm kiếm", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if(TextUtils.equals(search,"all")){
+                if (TextUtils.equals(search, "all")) {
                     lvShowAllNote.setAdapter(adapter);
-                }
-                else {
-                    List<Note> listSearch = DatabaseConnection.getInstance(ShowAllNotesActivity.this).noteDao().searchNote(search);
+                } else {
+                    List<Note> listSearch = DatabaseConnection.getInstance(ShowAllNotesActivity.this).noteDao().searchNote(search,u.getId());
                     NoteAdapter adapter = new NoteAdapter(ShowAllNotesActivity.this, R.layout.custom_note, listSearch);
                     lvShowAllNote.setAdapter(adapter);
                 }

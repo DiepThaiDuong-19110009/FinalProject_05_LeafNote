@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".SettingActivity">
+    tools:context=".custom.CustomPhotoActivity">
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,7 +18,7 @@
             android:padding="20dp">
 
             <TextView
-                android:id="@+id/txtBackHome"
+                android:id="@+id/txtDonePhoto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="Cài đặt"
+                android:text="Danh sách ghi chú hình ảnh"
                 android:textSize="20dp"
                 android:textStyle="bold" />
 
@@ -55,64 +55,48 @@
                 android:drawableStart="@drawable/ic_baseline_more_horiz_24" />
         </LinearLayout>
 
+
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
 
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_gravity="center"
+        <EditText
+            android:id="@+id/edtTimKiemPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/radius_search"
+            android:drawableStart="@drawable/ic_baseline_search_24"
+            android:ems="10"
+            android:hint="Tìm kiếm"
+            android:inputType="textPersonName"
+            android:padding="6dp"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/btnTimPhoto"
+            android:layout_width="150dp"
+            android:layout_height="35dp"
+            android:layout_weight="1"
             android:background="@drawable/radius"
-            android:padding="10dp"
-            android:layout_marginTop="20dp"
-            app:srcCompat="@drawable/ic_baseline_person_24" />
-
-        <TextView
-            android:id="@+id/textView33"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="10dp"
-            android:text="Username" />
-
-        <TextView
-            android:id="@+id/txtAccount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-            android:gravity="center_vertical"
-            android:padding="20dp"
-            android:text="Tài khoản"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txtChangePassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableRight="@drawable/ic_baseline_keyboard_arrow_right_24"
-            android:gravity="center_vertical"
-            android:padding="20dp"
-            android:text="Đổi mật khẩu"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/txtLogout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableStart="@drawable/ic_baseline_logout_24"
-            android:drawablePadding="10dp"
-            android:gravity="center_vertical"
-            android:padding="20dp"
-            android:text="Đăng xuất"
-            android:textColor="@color/mainColor"
+            android:text="Tìm"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
             android:textStyle="bold" />
     </LinearLayout>
 
+    <ListView
+        android:id="@+id/listViewImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:scrollbars="none"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp">
+
+    </ListView>
 </LinearLayout>

@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
 
-<!--Bắt đầu trang chủ-->
+    <!--Bắt đầu trang chủ-->
     <ScrollView
         android:id="@+id/Home"
         android:layout_width="match_parent"
@@ -149,47 +149,104 @@
                         android:layout_height="200dp"
                         android:orientation="horizontal">
 
-                        <TextView
-                            android:id="@+id/textView4"
+                        <LinearLayout
                             android:layout_width="200dp"
                             android:layout_height="match_parent"
-                            android:layout_margin="20dp"
-                            android:layout_weight="1"
-                            android:drawableTop="@drawable/ic_baseline_push_pin_24"
-                            android:drawablePadding="20dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="20dp"
                             android:background="@drawable/shadow"
-                            android:lineHeight="20dp"
-                            android:padding="10dp"
-                            android:text="Giúp ghi chú rõ ràng hơn bằng cách dùng màu sắc, phông chữ và màu tô sáng"/>
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="20dp">
 
-                        <TextView
-                            android:id="@+id/textView5"
+                            <TextView
+                                android:id="@+id/txtListDocument"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16dp"
+                                android:text="Ghi chú văn bản"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txtDanhSachGhiChu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/radius"
+                                android:layout_marginTop="20dp"
+                                android:drawableTop="@drawable/ic_baseline_sticky_note_2_24_white"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="20dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="200dp"
                             android:layout_height="match_parent"
-                            android:layout_margin="20dp"
-                            android:layout_weight="1"
-                            android:drawableTop="@drawable/ic_baseline_create_24"
-                            android:drawablePadding="20dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="20dp"
                             android:background="@drawable/shadow"
-                            android:lineHeight="20dp"
-                            android:padding="10dp"
-                            android:text="Thêm nhiệm vụ vào mục ghi chú giúp bạn quản lý tốt công việc của mình hơn" />
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="20dp">
 
+                            <TextView
 
-                        <TextView
-                            android:id="@+id/textView6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16dp"
+                                android:text="Ghi chú hình ảnh"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txtDanhSachPhoto"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/radius"
+                                android:layout_marginTop="20dp"
+                                android:drawableTop="@drawable/ic_baseline_perm_media_24_white"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="20dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
                             android:layout_width="200dp"
                             android:layout_height="match_parent"
-                            android:layout_margin="20dp"
-                            android:layout_weight="1"
-                            android:drawableTop="@drawable/ic_baseline_create_24"
-                            android:drawablePadding="20dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="20dp"
                             android:background="@drawable/shadow"
-                            android:lineHeight="20dp"
-                            android:padding="10dp"
-                            android:text="Thêm nhiệm vụ vào mục ghi chú giúp bạn quản lý tốt công việc của mình hơn" />
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="20dp">
 
+                            <TextView
+                                android:id="@+id/txtListAudio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="16dp"
+                                android:text="Ghi chú âm thanh"
+                                android:textStyle="bold" />
 
+                            <TextView
+                                android:id="@+id/txtDanhSachGhiAm"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:background="@drawable/radius"
+                                android:layout_marginTop="20dp"
+                                android:drawableTop="@drawable/ic_baseline_mic_24_white"
+                                android:paddingLeft="20dp"
+                                android:paddingRight="20dp"
+                                android:paddingTop="20dp"/>
+                        </LinearLayout>
                     </LinearLayout>
                 </HorizontalScrollView>
 
@@ -270,13 +327,6 @@
                                 android:text=""
                                 android:textStyle="bold" />
 
-                            <TextView
-                                android:id="@+id/textView15"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="bottom"
-                                android:paddingLeft="10dp"
-                                android:text="2 phút trước" />
                         </LinearLayout>
 
                         <LinearLayout
@@ -305,13 +355,7 @@
                                 android:textStyle="bold"
                                 android:text="" />
 
-                            <TextView
-                                android:id="@+id/textView18"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:gravity="bottom"
-                                android:paddingLeft="10dp"
-                                android:text="5 phút trước" />
+
                         </LinearLayout>
 
                         <LinearLayout
@@ -361,7 +405,6 @@
                                     android:gravity="center"
                                     android:text="" />
                             </LinearLayout>
-
                         </LinearLayout>
                     </LinearLayout>
                 </HorizontalScrollView>
@@ -419,9 +462,9 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-<!--Kết thúc trang chủ-->
+    <!--Kết thúc trang chủ-->
 
-<!--Bắt đầu Nav dưới cùng-->
+    <!--Bắt đầu Nav dưới cùng-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -436,15 +479,6 @@
             android:paddingTop="10dp"
             android:paddingRight="20dp"
             android:paddingBottom="10dp">
-
-            <TextView
-                android:id="@+id/openDeleted"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center|left"
-                android:drawableStart="@drawable/ic_baseline_delete_24"
-                android:textSize="20dp" />
-
 
             <TextView
                 android:id="@+id/openSearch"
@@ -468,7 +502,6 @@
                 android:textColor="@color/white" />
         </com.google.android.material.bottomnavigation.BottomNavigationView>
     </RelativeLayout>
-<!--Kết thúc Nav dưới cùng-->
+    <!--Kết thúc Nav dưới cùng-->
 
 </RelativeLayout>
-

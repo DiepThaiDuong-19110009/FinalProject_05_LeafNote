@@ -6,21 +6,38 @@
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/drawable-v24/ic_baseline_delete_24_note.xml" value="0.119" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/drawable-v24/ic_baseline_mode_edit_24_note.xml" value="0.119" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/drawable-v24/radius_white_2.xml" value="0.119" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/drawable/ic_baseline_add_circle_outline_24.xml" value="0.165" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.203" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/drawable/ic_baseline_create_24.xml" value="0.12" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/drawable/ic_baseline_photo_camera_24_photo_activity.xml" value="0.165" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/drawable/ic_baseline_play_circle_outline_24.xml" value="0.165" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/drawable/radius.xml" value="0.119" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/drawable/radius_white.xml" value="0.119" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_account.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_change_background.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_change_password.xml" value="0.25416666666666665" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_confirm.xml" value="0.11979166666666667" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_custom.xml" value="0.11302083333333333" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_custom_photo.xml" value="0.15104166666666666" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_custom_record.xml" value="0.13489583333333333" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_delete.xml" value="0.22826086956521738" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_draw.xml" value="0.1953125" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_forgot.xml" value="0.25416666666666665" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_login.xml" value="0.22826086956521738" />
-        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_note.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_note_slide_tab.xml" value="0.22826086956521738" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_photo.xml" value="0.15104166666666666" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_record.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_search.xml" value="0.2" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_setting.xml" value="0.1953125" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_show_all_notes.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_sign_up.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_splash.xml" value="0.1984375" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/activity_update_note.xml" value="0.16" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/custom_note.xml" value="0.264" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/custom_photo.xml" value="0.15104166666666666" />
+        <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/custom_record.xml" value="0.13489583333333333" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/fragment_photo_note.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/fragment_text_note.xml" value="0.22826086956521738" />
         <entry key="..\:/Android/LeafNote_V1.1/app/src/main/res/layout/layout_bottom_sheet.xml" value="0.22826086956521738" />

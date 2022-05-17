@@ -11,29 +11,43 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
-@Entity(foreignKeys =
-@ForeignKey(entity = Users.class,parentColumns = "id",childColumns = "user_id"))
+@Entity(foreignKeys = {
+        @ForeignKey(entity = Users.class, parentColumns = "id", childColumns = "user_id"),
+        @ForeignKey(entity = NoteCategory.class, parentColumns = "id",childColumns = "category_id")
+}
+)
 public class Note implements Serializable {
     @PrimaryKey(autoGenerate = true)
     int id;
     @ColumnInfo(name="user_id")
     int userId;
+    @ColumnInfo(name="category_id")
+    int categoryId;
     String title;
     String content;
-    String created_at;
-    String updated_at;
+    String created_date;
+    String created_time;
     boolean checked;
 
     public Note() {
     }
 
-    public Note(int userId, String title, String content, String created_at, String updated_at, boolean checked) {
+    public Note(int userId, int categoryId, String title, String content, String created_date, String created_time, boolean checked) {
         this.userId = userId;
+        this.categoryId = categoryId;
         this.title = title;
         this.content = content;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
+        this.created_date = created_date;
+        this.created_time = created_time;
         this.checked = checked;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public int getUserId() {
@@ -44,12 +58,12 @@ public class Note implements Serializable {
         this.userId = userId;
     }
 
-    public int getId() {
-        return id;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getTitle() {
@@ -68,20 +82,20 @@ public class Note implements Serializable {
         this.content = content;
     }
 
-    public String getCreated_at() {
-        return created_at;
+    public String getCreated_date() {
+        return created_date;
     }
 
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+    public void setCreated_date(String created_date) {
+        this.created_date = created_date;
     }
 
-    public String getUpdated_at() {
-        return updated_at;
+    public String getCreated_time() {
+        return created_time;
     }
 
-    public void setUpdated_at(String updated_at) {
-        this.updated_at = updated_at;
+    public void setCreated_time(String created_time) {
+        this.created_time = created_time;
     }
 
     public boolean isChecked() {
@@ -90,18 +104,6 @@ public class Note implements Serializable {
 
     public void setChecked(boolean checked) {
         this.checked = checked;
-    }
-
-    @Override
-    public String toString() {
-        return "Note{" +
-                "note_id=" + id +
-                ", title='" + title + '\'' +
-                ", content='" + content + '\'' +
-                ", created_at='" + created_at + '\'' +
-                ", updated_at='" + updated_at + '\'' +
-                ", checked=" + checked +
-                '}';
     }
 }
 

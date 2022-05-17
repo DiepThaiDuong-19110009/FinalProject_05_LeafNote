@@ -5,41 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RecordActivity">
+    tools:context=".PhotoActivity">
+
     <TextView
-        android:id="@+id/txtThoat"
+        android:id="@+id/txtThoatPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Thoát"
-        android:textStyle="bold"
-        android:layout_margin="10dp"
-        android:textColor="@color/mainColor"/>
+        android:textSize="20sp"
+        android:textColor="@color/black"/>
+
     <EditText
-        android:id="@+id/edtTitleAudio"
+        android:id="@+id/edtTitlePhoto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Nhập tiêu đề cho note"
         android:layout_gravity="center"
+        android:layout_margin="40dp"
         android:background="@drawable/stroke"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingBottom="10dp"
         android:paddingTop="10dp"
-        android:layout_margin="10dp"
-        android:textSize="20sp"/>
-    <Button
-        android:id="@+id/start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:hint="Đặt tiêu đề" />
+
+    <ImageView
+        android:id="@+id/imageViewPhoto"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:layout_gravity="center"
-        android:layout_margin="40dp"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:background="@drawable/radius_white"
-        android:text="Ghi" />
+        android:padding="20dp"
+        android:background="@drawable/stroke"
+        android:src="@drawable/ic_baseline_image_24"/>
 
     <Button
-        android:id="@+id/stop"
+        android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -47,25 +46,23 @@
         android:paddingRight="20dp"
         android:paddingLeft="20dp"
         android:background="@drawable/radius_white"
-        android:text="Dừng" />
+        android:text="Lưu ảnh" />
 
-    <Chronometer
-        android:id="@+id/record_timer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:textColor="@color/black"
-        android:layout_margin="50dp"
-        />
     <Button
-        android:id="@+id/btnSaveAudio"
+        android:id="@+id/btnPhoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:drawableStart="@drawable/ic_baseline_photo_camera_24_photo_activity"
+        android:drawablePadding="10dp"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:background="@drawable/radius"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
         android:layout_gravity="center"
-        android:layout_margin="40dp"
-        android:paddingRight="20dp"
-        android:paddingLeft="20dp"
-        android:background="@drawable/radius_white"
-        android:text="Lưu" />
+        android:textSize="20sp"
+        android:text="Chụp ảnh"/>
+
 </LinearLayout>

@@ -6,12 +6,14 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
+import hcmute.edu.vn.leafnote.dao.NoteCategoryDao;
 import hcmute.edu.vn.leafnote.dao.NoteDao;
 import hcmute.edu.vn.leafnote.dao.UserDao;
 import hcmute.edu.vn.leafnote.entity.Note;
+import hcmute.edu.vn.leafnote.entity.NoteCategory;
 import hcmute.edu.vn.leafnote.entity.Users;
 
-@Database(entities = {Users.class, Note.class},version=1)
+@Database(entities = {Users.class, Note.class, NoteCategory.class},version=1)
 public abstract class DatabaseConnection extends RoomDatabase {
     private static final String DATABASE_NAME = "leafnote.db";
     private static DatabaseConnection instance;
@@ -25,4 +27,5 @@ public abstract class DatabaseConnection extends RoomDatabase {
     }
     public abstract UserDao userDao();
     public abstract NoteDao noteDao();
+    public abstract NoteCategoryDao categoryDao();
 }

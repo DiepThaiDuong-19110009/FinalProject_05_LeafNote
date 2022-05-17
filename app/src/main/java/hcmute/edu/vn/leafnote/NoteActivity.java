@@ -11,7 +11,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import hcmute.edu.vn.leafnote.database.DatabaseConnection;
 import hcmute.edu.vn.leafnote.entity.Note;
@@ -19,7 +21,7 @@ import hcmute.edu.vn.leafnote.entity.Users;
 
 public class NoteActivity extends AppCompatActivity {
 
-    TextView saveNote;
+    TextView saveNote,cancel;
     EditText edtTitle, edtContent;
     SharedPreferences pref;
 
@@ -29,23 +31,27 @@ public class NoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_note);
 
         addControl();
-        setSaveNote();
-    }
-
-    private void addControl() {
-
-        saveNote = (TextView) findViewById(R.id.txtSaveNote);
-        edtTitle = (EditText) findViewById(R.id.edtTitle);
-        edtContent = (EditText) findViewById(R.id.edtContent);
-    }
-
-    public void setSaveNote() {
         saveNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 addNote();
             }
         });
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(NoteActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void addControl() {
+
+        saveNote = (TextView) findViewById(R.id.txtSaveNote);
+        cancel=(TextView)findViewById(R.id.txtCancel);
+        edtTitle = (EditText) findViewById(R.id.edtTitle);
+        edtContent = (EditText) findViewById(R.id.edtContent);
     }
 
     private void addNote() {
@@ -62,8 +68,11 @@ public class NoteActivity extends AppCompatActivity {
 
         Users u = DatabaseConnection.getInstance(this).userDao().FindUserByUserName(username);
 
-        //Date date =new Date();
-        Note note = new Note(u.getId(), title, content, "", "", false);
+        Date date =new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy", Locale.US);
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm:ss", Locale.US);
+
+        Note note = new Note(u.getId(),1, title, content, dateFormat.format(date), timeFormat.format(date), false);
         DatabaseConnection.getInstance(this).noteDao().insert(note);
         Toast.makeText(this, "Ghi chú thành công", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(NoteActivity.this, MainActivity.class);

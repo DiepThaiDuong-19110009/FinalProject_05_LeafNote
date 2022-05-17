@@ -1,4 +1,4 @@
-package hcmute.edu.vn.leafnote;
+package hcmute.edu.vn.leafnote.adapter;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,6 +14,9 @@ import android.widget.Toast;
 
 import java.util.List;
 
+import hcmute.edu.vn.leafnote.R;
+import hcmute.edu.vn.leafnote.ShowAllNotesActivity;
+import hcmute.edu.vn.leafnote.UpdateNoteActivity;
 import hcmute.edu.vn.leafnote.database.DatabaseConnection;
 import hcmute.edu.vn.leafnote.entity.Note;
 
@@ -75,7 +78,7 @@ public class NoteAdapter extends BaseAdapter {
         Note note = noteList.get(position);
         edtTitle.setText(note.getTitle());
         edtContent.setText(note.getContent());
-        txtDate.setText(note.getCreated_at());
+        txtDate.setText(note.getCreated_date());
         btnCapNhat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,4 +113,3 @@ public class NoteAdapter extends BaseAdapter {
                 }).setNegativeButton("Không", null).show();
     }
 }
-

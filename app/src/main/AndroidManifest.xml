@@ -3,6 +3,10 @@
     package="hcmute.edu.vn.leafnote">
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,6 +17,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LeafNote">
         <activity
+            android:name=".custom.CustomRecordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".custom.CustomPhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".PhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AccountActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ForgotActivity"
+            android:exported="false" />
+        <activity
+            android:name=".RecordActivity"
+            android:exported="false" />
+        <activity
             android:name=".UpdateNoteActivity"
             android:exported="false" />
         <activity
@@ -20,12 +45,6 @@
             android:exported="false" />
         <activity
             android:name=".ShowAllNotesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DeleteActivity"
-            android:exported="false" />
-        <activity
-            android:name=".RecordActivity"
             android:exported="false" />
         <activity
             android:name=".DrawActivity"
@@ -40,7 +59,7 @@
             android:name=".ChangeBackgroundActivity"
             android:exported="false" />
         <activity
-            android:name=".CustomActivity"
+            android:name=".custom.CustomActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

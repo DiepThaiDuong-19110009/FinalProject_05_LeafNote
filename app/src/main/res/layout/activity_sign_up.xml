@@ -122,16 +122,7 @@
                 android:layout_height="match_parent"
                 android:paddingTop="5dp"
                 android:paddingBottom="20dp"
-                android:orientation="horizontal">
-
-                <CheckBox
-                    android:id="@+id/chboxShowPassword"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Hiện mật khẩu" />
-
-            </LinearLayout>
+                android:orientation="horizontal"/>
 
             <Button
                 android:id="@+id/btnSignUp"
@@ -144,41 +135,11 @@
                 android:textColor="@color/white"
                 android:text="Đăng ký" />
 
-            <TextView
-                android:id="@+id/textView5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="40dp"
-                android:paddingBottom="20dp"
-                android:text="Hoặc đăng ký với"
-                android:gravity="center"/>
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="horizontal">
-
-                <ImageView
-                    android:onClick="signupGoogle"
-                    android:id="@+id/imageView5"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:padding="10dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shadow"
-                    app:srcCompat="@drawable/google" />
-
-                <ImageView
-                    android:onClick="signupFacebook"
-                    android:id="@+id/imageView6"
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:padding="10dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/shadow"
-                    app:srcCompat="@drawable/facebook" />
-            </LinearLayout>
+                android:orientation="horizontal"/>
 
             <LinearLayout
                 android:layout_width="match_parent"

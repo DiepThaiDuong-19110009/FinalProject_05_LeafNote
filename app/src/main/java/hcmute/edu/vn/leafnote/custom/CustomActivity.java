@@ -1,13 +1,15 @@
-package hcmute.edu.vn.leafnote;
+package hcmute.edu.vn.leafnote.custom;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import hcmute.edu.vn.leafnote.ChangeBackgroundActivity;
+import hcmute.edu.vn.leafnote.R;
 
 public class CustomActivity extends AppCompatActivity {
 

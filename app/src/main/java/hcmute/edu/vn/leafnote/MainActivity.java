@@ -1,14 +1,15 @@
 package hcmute.edu.vn.leafnote;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -18,8 +19,12 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import hcmute.edu.vn.leafnote.custom.CustomActivity;
+import hcmute.edu.vn.leafnote.custom.CustomPhotoActivity;
+import hcmute.edu.vn.leafnote.custom.CustomRecordActivity;
 import hcmute.edu.vn.leafnote.database.DatabaseConnection;
 import hcmute.edu.vn.leafnote.entity.Note;
+import hcmute.edu.vn.leafnote.entity.Users;
 
 public class MainActivity extends AppCompatActivity {
     //Open Search
@@ -46,39 +51,26 @@ public class MainActivity extends AppCompatActivity {
     LinearLayout allNotes;
 
     //Mở cài đặt
-    TextView setting, txtTitle, txtDate,txtTitle2,txtDate2, txtSoLuong;
+    TextView setting, txtTitle, txtDate, txtTitle2, txtDate2,
+            txtSoLuong, txtDanhSachGhiChu, txtDanhSachPhoto,txtDanhSachGhiAm;
+    SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        boolean finish= getIntent().getBooleanExtra("finish",false);
+        if(finish){
+            Toast.makeText(this,"Đăng xuất thành công", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(MainActivity.this,LoginActivity.class));
+            finish();
+            return;
+        }
         setContentView(R.layout.activity_main);
 
         //Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
         addControl();
-        List<Note> listNote= DatabaseConnection.getInstance(this).noteDao().getLastRow();
-        if(listNote.isEmpty())
-        {
-            txtTitle.setText("Chưa có nội dung");
-            txtDate.setText("");
-            txtTitle2.setText("Chưa có nội dung");
-            txtDate2.setText("");
-            txtSoLuong.setText("Chưa có ghi chú");
-        }
-        else if(listNote.size()<2){
-            txtTitle.setText(listNote.get(0).getTitle());
-            txtDate.setText(listNote.get(0).getCreated_at());
-            txtTitle2.setText("Chưa có nội dung");
-            txtDate2.setText("");
-            txtSoLuong.setText("("+listNote.size()+")");
-        }
-        else
-        {
-            txtTitle.setText(listNote.get(0).getTitle());
-            txtDate.setText(listNote.get(0).getCreated_at());
-            txtTitle2.setText(listNote.get(1).getTitle());
-            txtDate2.setText(listNote.get(1).getCreated_at());
-            txtSoLuong.setText("("+listNote.size()+")");
-        }
+
+        setDanhSach();
         setRealTime();
         setDay();
 
@@ -91,15 +83,13 @@ public class MainActivity extends AppCompatActivity {
         //Open new note
         setOpenSubNote();
 
-        //Open deleted
-        setOpenDeleted();
-
         //Open allNotes
         setOpenAllNotes();
 
         //Open setting
         setOpenSetting();
 
+        setClickDanhSach();
 
         //Nhận ảnh
         // initialise the layout
@@ -124,6 +114,58 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void setDanhSach() {
+        pref = getSharedPreferences("login", MODE_PRIVATE);
+
+        String username = pref.getString("username", "");
+
+        Users u = DatabaseConnection.getInstance(this).userDao().FindUserByUserName(username);
+
+        List<Note> listNote = DatabaseConnection.getInstance(this).noteDao().getLastRow(u.getId());
+        if (listNote.isEmpty()) {
+            txtTitle.setText("Chưa có nội dung");
+            txtDate.setText("");
+            txtTitle2.setText("Chưa có nội dung");
+            txtDate2.setText("");
+            txtSoLuong.setText("(0)");
+        } else if (listNote.size() < 2) {
+            txtTitle.setText(listNote.get(0).getTitle());
+            txtDate.setText(listNote.get(0).getCreated_date());
+            txtTitle2.setText("Chưa có nội dung");
+            txtDate2.setText("");
+            txtSoLuong.setText("(" + listNote.size() + ")");
+        } else {
+            txtTitle.setText(listNote.get(0).getTitle());
+            txtDate.setText(listNote.get(0).getCreated_date());
+            txtTitle2.setText(listNote.get(1).getTitle());
+            txtDate2.setText(listNote.get(1).getCreated_date());
+            txtSoLuong.setText("(" + listNote.size() + ")");
+        }
+    }
+
+    private void setClickDanhSach() {
+        txtDanhSachGhiChu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent allNotes = new Intent(MainActivity.this, ShowAllNotesActivity.class);
+                startActivity(allNotes);
+            }
+        });
+        txtDanhSachPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(MainActivity.this, CustomPhotoActivity.class);
+                startActivity(intent);
+            }
+        });
+        txtDanhSachGhiAm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(MainActivity.this, CustomRecordActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
 
     private void addControl() {
         //Start Header
@@ -141,22 +183,25 @@ public class MainActivity extends AppCompatActivity {
         subNote = (TextView) findViewById(R.id.txtSubNewNote);
 
         //Open deleted
-        deleted = (TextView) findViewById(R.id.openDeleted);
+
 
         //Open allNotes
         allNotes = (LinearLayout) findViewById(R.id.allNotes);
 
         //Open Setting
         setting = (TextView) findViewById(R.id.txtSetting);
-        txtTitle=(TextView) findViewById(R.id.txtTitle);
-        txtDate=(TextView) findViewById(R.id.txtDate);
-        txtTitle2=(TextView) findViewById(R.id.txtTitle2);
-        txtDate2=(TextView) findViewById(R.id.txtDate2);
-        txtSoLuong=(TextView)findViewById(R.id.txtSoLuong);
+        txtTitle = (TextView) findViewById(R.id.txtTitle);
+        txtDate = (TextView) findViewById(R.id.txtDate);
+        txtTitle2 = (TextView) findViewById(R.id.txtTitle2);
+        txtDate2 = (TextView) findViewById(R.id.txtDate2);
+        txtSoLuong = (TextView) findViewById(R.id.txtSoLuong);
+        txtDanhSachGhiChu = (TextView) findViewById(R.id.txtDanhSachGhiChu);
+        txtDanhSachPhoto = (TextView) findViewById(R.id.txtDanhSachPhoto);
+        txtDanhSachGhiAm=(TextView) findViewById(R.id.txtDanhSachGhiAm);
     }
 
     //Mở cài đặt
-    private void setOpenSetting(){
+    private void setOpenSetting() {
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -177,16 +222,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    //Open thùng rác
-    private void setOpenDeleted() {
-        deleted.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent openDeleted = new Intent(MainActivity.this, DeleteActivity.class);
-                startActivity(openDeleted);
-            }
-        });
-    }
 
     //Open Search
     public void setOpenSearch() {
@@ -208,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(allNotes);
             }
         });
+
     }
 
     //Cài đặt Bottom Sheet
@@ -223,7 +259,7 @@ public class MainActivity extends AppCompatActivity {
                 View bottomSheetView = LayoutInflater.from(getApplicationContext())
                         .inflate(
                                 R.layout.layout_bottom_sheet,
-                                (LinearLayout)findViewById(R.id.bottomSheetContainer)
+                                (LinearLayout) findViewById(R.id.bottomSheetContainer)
                         );
 
 
@@ -241,18 +277,8 @@ public class MainActivity extends AppCompatActivity {
                 bottomSheetView.findViewById(R.id.createCamera).setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent openCamera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        startActivity(openCamera);
-                        bottomSheetDialog.dismiss();
-                    }
-                });
-
-                //Sự kiện quay phim
-                bottomSheetView.findViewById(R.id.createVideo).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent openVideo = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
-                        startActivity(openVideo);
+                        Intent intent = new Intent(MainActivity.this, PhotoActivity.class);
+                        startActivity(intent);
                         bottomSheetDialog.dismiss();
                     }
                 });
@@ -263,16 +289,6 @@ public class MainActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         Intent openDraw = new Intent(MainActivity.this, DrawActivity.class);
                         startActivity(openDraw);
-                        bottomSheetDialog.dismiss();
-                    }
-                });
-
-                //Sự kiện mở đính kèm
-                bottomSheetView.findViewById(R.id.createAttach).setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent openFolder = new Intent(Intent.ACTION_PICK);
-                        startActivity(openFolder);
                         bottomSheetDialog.dismiss();
                     }
                 });
