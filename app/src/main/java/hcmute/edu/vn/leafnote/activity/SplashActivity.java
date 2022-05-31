@@ -1,10 +1,12 @@
-package hcmute.edu.vn.leafnote;
+package hcmute.edu.vn.leafnote.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import hcmute.edu.vn.leafnote.R;
 
 public class SplashActivity extends AppCompatActivity {
     private static boolean splashLoaded = false;

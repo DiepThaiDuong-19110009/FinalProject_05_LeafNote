@@ -1,8 +1,8 @@
-package hcmute.edu.vn.leafnote;
+package hcmute.edu.vn.leafnote.activity;
 
-import static hcmute.edu.vn.leafnote.Draw.colorList;
-import static hcmute.edu.vn.leafnote.Draw.current_brush;
-import static hcmute.edu.vn.leafnote.Draw.pathList;
+import static hcmute.edu.vn.leafnote.activity.Draw.colorList;
+import static hcmute.edu.vn.leafnote.activity.Draw.current_brush;
+import static hcmute.edu.vn.leafnote.activity.Draw.pathList;
 
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -13,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import hcmute.edu.vn.leafnote.R;
 
 public class DrawActivity extends AppCompatActivity {
 

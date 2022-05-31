@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_pages">
 
-    <hcmute.edu.vn.leafnote.Draw
+    <hcmute.edu.vn.leafnote.activity.Draw
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

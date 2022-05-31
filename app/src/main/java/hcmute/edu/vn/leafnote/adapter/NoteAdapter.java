@@ -15,8 +15,8 @@ import android.widget.Toast;
 import java.util.List;
 
 import hcmute.edu.vn.leafnote.R;
-import hcmute.edu.vn.leafnote.ShowAllNotesActivity;
-import hcmute.edu.vn.leafnote.UpdateNoteActivity;
+import hcmute.edu.vn.leafnote.activity.ShowAllNotesActivity;
+import hcmute.edu.vn.leafnote.activity.UpdateNoteActivity;
 import hcmute.edu.vn.leafnote.database.DatabaseConnection;
 import hcmute.edu.vn.leafnote.entity.Note;
 

@@ -1,4 +1,4 @@
-package hcmute.edu.vn.leafnote;
+package hcmute.edu.vn.leafnote.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import hcmute.edu.vn.leafnote.R;
 import hcmute.edu.vn.leafnote.database.DatabaseConnection;
 import hcmute.edu.vn.leafnote.entity.Users;
 

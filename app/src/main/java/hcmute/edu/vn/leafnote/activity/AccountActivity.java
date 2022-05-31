@@ -1,4 +1,4 @@
-package hcmute.edu.vn.leafnote;
+package hcmute.edu.vn.leafnote.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,11 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import hcmute.edu.vn.leafnote.R;
 import hcmute.edu.vn.leafnote.database.DatabaseConnection;
 import hcmute.edu.vn.leafnote.entity.Users;
-import hcmute.edu.vn.leafnote.service.JavaMail;
 
 public class AccountActivity extends AppCompatActivity {
 

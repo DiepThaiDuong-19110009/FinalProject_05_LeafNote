@@ -16,7 +16,6 @@ import android.widget.Toast;
 import java.util.List;
 
 import hcmute.edu.vn.leafnote.R;
-import hcmute.edu.vn.leafnote.ShowAllNotesActivity;
 import hcmute.edu.vn.leafnote.custom.CustomPhotoActivity;
 import hcmute.edu.vn.leafnote.database.DatabaseConnection;
 import hcmute.edu.vn.leafnote.entity.Note;

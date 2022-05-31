@@ -1,4 +1,4 @@
-package hcmute.edu.vn.leafnote;
+package hcmute.edu.vn.leafnote.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,6 +19,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import hcmute.edu.vn.leafnote.R;
 import hcmute.edu.vn.leafnote.custom.CustomActivity;
 import hcmute.edu.vn.leafnote.custom.CustomPhotoActivity;
 import hcmute.edu.vn.leafnote.custom.CustomRecordActivity;

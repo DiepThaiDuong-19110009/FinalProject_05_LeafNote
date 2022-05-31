@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import hcmute.edu.vn.leafnote.ChangeBackgroundActivity;
+import hcmute.edu.vn.leafnote.activity.ChangeBackgroundActivity;
 import hcmute.edu.vn.leafnote.R;
 
 public class CustomActivity extends AppCompatActivity {

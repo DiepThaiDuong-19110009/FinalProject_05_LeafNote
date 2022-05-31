@@ -1,7 +1,7 @@
-package hcmute.edu.vn.leafnote;
+package hcmute.edu.vn.leafnote.activity;
 
-import static hcmute.edu.vn.leafnote.DrawActivity.paint_brush;
-import static hcmute.edu.vn.leafnote.DrawActivity.path;
+import static hcmute.edu.vn.leafnote.activity.DrawActivity.paint_brush;
+import static hcmute.edu.vn.leafnote.activity.DrawActivity.path;
 
 import android.content.Context;
 import android.graphics.Canvas;

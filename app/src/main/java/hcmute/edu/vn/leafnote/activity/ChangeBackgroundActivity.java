@@ -1,25 +1,15 @@
-package hcmute.edu.vn.leafnote;
+package hcmute.edu.vn.leafnote.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
-import hcmute.edu.vn.leafnote.database.DatabaseConnection;
-import hcmute.edu.vn.leafnote.entity.Note;
+import hcmute.edu.vn.leafnote.R;
 
 public class ChangeBackgroundActivity extends AppCompatActivity {
     //Check Update

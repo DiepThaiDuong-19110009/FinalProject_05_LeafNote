@@ -23,55 +23,55 @@
             android:name=".custom.CustomPhotoActivity"
             android:exported="false" />
         <activity
-            android:name=".PhotoActivity"
+            android:name=".activity.PhotoActivity"
             android:exported="false" />
         <activity
-            android:name=".AccountActivity"
+            android:name=".activity.AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".ChangePasswordActivity"
+            android:name=".activity.ChangePasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".ForgotActivity"
+            android:name=".activity.ForgotActivity"
             android:exported="false" />
         <activity
-            android:name=".RecordActivity"
+            android:name=".activity.RecordActivity"
             android:exported="false" />
         <activity
-            android:name=".UpdateNoteActivity"
+            android:name=".activity.UpdateNoteActivity"
             android:exported="false" />
         <activity
-            android:name=".SettingActivity"
+            android:name=".activity.SettingActivity"
             android:exported="false" />
         <activity
-            android:name=".ShowAllNotesActivity"
+            android:name=".activity.ShowAllNotesActivity"
             android:exported="false" />
         <activity
-            android:name=".DrawActivity"
+            android:name=".activity.DrawActivity"
             android:exported="false" />
         <activity
-            android:name=".SplashActivity"
+            android:name=".activity.SplashActivity"
             android:exported="false" />
         <activity
-            android:name=".SearchActivity"
+            android:name=".activity.SearchActivity"
             android:exported="false" />
         <activity
-            android:name=".ChangeBackgroundActivity"
+            android:name=".activity.ChangeBackgroundActivity"
             android:exported="false" />
         <activity
             android:name=".custom.CustomActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".SignUpActivity"
+            android:name=".activity.SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".NoteActivity"
+            android:name=".activity.NoteActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
