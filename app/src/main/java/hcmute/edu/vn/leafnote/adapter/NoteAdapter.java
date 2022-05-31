@@ -78,7 +78,7 @@ public class NoteAdapter extends BaseAdapter {
         Note note = noteList.get(position);
         edtTitle.setText(note.getTitle());
         edtContent.setText(note.getContent());
-        txtDate.setText(note.getCreated_date());
+        txtDate.setText(note.getCreated_date()+ " "+note.getCreated_time());
         btnCapNhat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

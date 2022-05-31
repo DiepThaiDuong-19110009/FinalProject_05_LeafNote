@@ -12,16 +12,13 @@ import java.util.Date;
 import java.util.List;
 
 @Entity(foreignKeys = {
-        @ForeignKey(entity = Users.class, parentColumns = "id", childColumns = "user_id"),
-        @ForeignKey(entity = NoteCategory.class, parentColumns = "id",childColumns = "category_id")
-}
+        @ForeignKey(entity = Users.class, parentColumns = "id", childColumns = "user_id")}
 )
 public class Note implements Serializable {
     @PrimaryKey(autoGenerate = true)
     int id;
     @ColumnInfo(name="user_id")
     int userId;
-    @ColumnInfo(name="category_id")
     int categoryId;
     String title;
     String content;

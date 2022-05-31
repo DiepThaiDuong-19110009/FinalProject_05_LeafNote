@@ -9,8 +9,14 @@
 
     <TextView
         android:id="@+id/txtPhoto"
-        android:layout_width="149dp"
-        android:layout_height="48dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="text"
+        android:textSize="20sp" />
+    <TextView
+        android:id="@+id/txtDatePhoto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="text"
         android:textSize="20sp" />
 

@@ -11,32 +11,46 @@
         android:layout_marginBottom="20dp"
         android:text="text"
         android:textSize="20sp" />
-
+    <TextView
+        android:id="@+id/txtDateAudio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="text"
+        android:textSize="20sp" />
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
         <Button
             android:id="@+id/btnPlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="40dp"
-            android:paddingRight="20dp"
-            android:paddingLeft="20dp"
+            android:layout_gravity="left"
+            android:layout_margin="10dp"
             android:background="@drawable/radius_white"
             android:text="Phát" />
         <Button
             android:id="@+id/btnStop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="40dp"
-            android:paddingRight="20dp"
-            android:paddingLeft="20dp"
+            android:layout_gravity="center_horizontal"
             android:background="@drawable/radius_white"
-            android:text="Dừng" />
+            android:text="Dừng"
+            android:layout_margin="10dp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnDeleteRecord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="10dp"
+            android:textColor="@color/white"
+            android:background="@drawable/radius"
+            android:text="Xóa" />
     </LinearLayout>
 
 </LinearLayout>

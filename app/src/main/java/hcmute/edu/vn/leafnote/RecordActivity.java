@@ -88,21 +88,22 @@ public class RecordActivity extends AppCompatActivity {
                     myAudioRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
                     myAudioRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                     myAudioRecorder.setOutputFile(outputFile);
-                }
-                timer.setBase(SystemClock.elapsedRealtime());
-                timer.start();
-                try {
-                    myAudioRecorder.prepare();
 
-                } catch (IllegalStateException ise) {
-                    // make something ...
-                } catch (IOException ioe) {
-                    // make something
+                    timer.setBase(SystemClock.elapsedRealtime());
+                    timer.start();
+                    try {
+                        myAudioRecorder.prepare();
+
+                    } catch (IllegalStateException ise) {
+                        // make something ...
+                    } catch (IOException ioe) {
+                        // make something
+                    }
+                    myAudioRecorder.start();
+                    start.setEnabled(false);
+                    stop.setEnabled(true);
+                    btnSaveAudio.setEnabled(false);
                 }
-                myAudioRecorder.start();
-                start.setEnabled(false);
-                stop.setEnabled(true);
-                btnSaveAudio.setEnabled(true);
             }
         });
 
