@@ -13,7 +13,7 @@ import java.util.List;
 
 @Entity(foreignKeys = {
         @ForeignKey(entity = Users.class, parentColumns = "id", childColumns = "user_id")}
-)
+)// foreign key
 public class Note implements Serializable {
     @PrimaryKey(autoGenerate = true)
     int id;

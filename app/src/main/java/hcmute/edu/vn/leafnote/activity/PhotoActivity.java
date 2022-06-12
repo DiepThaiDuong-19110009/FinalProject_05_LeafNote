@@ -93,16 +93,17 @@ public class PhotoActivity extends AppCompatActivity {
         txtThoatPhoto = (TextView) findViewById(R.id.txtThoatPhoto);
     }
 
-    private void setExitPhoto(){
+    private void setExitPhoto() {
         txtThoatPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(PhotoActivity.this,MainActivity.class);
+                Intent intent = new Intent(PhotoActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -114,6 +115,7 @@ public class PhotoActivity extends AppCompatActivity {
         }
     }
 
+    // yêu cầu quyền chụp ảnh
     private void askPermission() {
         ActivityCompat.requestPermissions(PhotoActivity.this, new String[]{
                 Manifest.permission.WRITE_EXTERNAL_STORAGE}, REQUEST_CODE);
@@ -121,6 +123,7 @@ public class PhotoActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == REQUEST_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 saveImage();
@@ -128,18 +131,16 @@ public class PhotoActivity extends AppCompatActivity {
                 Toast.makeText(this, "Vui lòng cho phép ứng dụng quyền ghi âm", Toast.LENGTH_SHORT).show();
             }
         }
-
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     private void saveImage() {
-        String title = edtViewPhoto.getText().toString().trim();
+        String title = edtViewPhoto.getText().toString().trim();// lấy title
         if (title.isEmpty()) {
             Toast.makeText(this, "Vui lòng nhập tiêu đề", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        File dir = new File(Environment.getExternalStorageDirectory(), "SaveImage");
+        File dir = new File(Environment.getExternalStorageDirectory(), "SaveImage");// tạo thư mục
 
         if (!dir.exists()) {
             dir.mkdir();
@@ -155,20 +156,20 @@ public class PhotoActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-        pref = getSharedPreferences("login", MODE_PRIVATE);
+        pref = getSharedPreferences("login", MODE_PRIVATE);// lấy share reference login
 
         String username = pref.getString("username", "");
 
         Users u = DatabaseConnection.getInstance(this).userDao().FindUserByUserName(username);
 
-        Date date = new Date();
+        Date date = new Date();// tạo date ghi chú
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy", Locale.US);
         SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm:ss", Locale.US);
-
+        // tạo note dạng photo
         Note note = new Note(u.getId(), 2, title, file.toString(), dateFormat.format(date), timeFormat.format(date), false);
-        DatabaseConnection.getInstance(this).noteDao().insert(note);
+        DatabaseConnection.getInstance(this).noteDao().insert(note);// lưu note xuống databse
         Toast.makeText(this, "Lưu ảnh thành công", Toast.LENGTH_SHORT).show();
-        Intent intent =new Intent(PhotoActivity.this,MainActivity.class);
+        Intent intent = new Intent(PhotoActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
         try {

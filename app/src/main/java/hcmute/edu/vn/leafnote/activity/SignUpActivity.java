@@ -54,11 +54,12 @@ public class SignUpActivity extends AppCompatActivity {
     }
 
     private void AddUser() {
-        String username = edtUsername.getText().toString().trim();
+        String username = edtUsername.getText().toString().trim();// lấy các thông tin đăng ký
         String password = edtPassword.getText().toString().trim();
         String confirm = edtConfirm.getText().toString().trim();
         String name = edtName.getText().toString().trim();
         String email = edtEmail.getText().toString().trim();
+        // kiểm tra logic đăng ký
         if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password) ||
                 TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(confirm)) {
             Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
@@ -78,15 +79,17 @@ public class SignUpActivity extends AppCompatActivity {
             Toast.makeText(this, "Email đã tồn tại", Toast.LENGTH_SHORT).show();
             return;
         }
-        Users user = new Users(username, password, name, email);
+        Users user = new Users(username, password, name, email);// tạo user
 //
 
-        DatabaseConnection.getInstance(this).userDao().insert(user);
+        DatabaseConnection.getInstance(this).userDao().insert(user);// lưu user xuống database
         Toast.makeText(this, "Đăng ký thành công", Toast.LENGTH_LONG).show();
         Intent intent=new Intent(SignUpActivity.this,LoginActivity.class);
         startActivity(intent);
         JavaMail.sendMail(email,"Đăng ký tài khoản thành công",
-                "Bạn vừa đăng ký thành công tài khoản trên leafapp.\nChân thành cảm ơn bạn đã quan tâm và sử dụng app. Chúc bạn ngày mới vui vẻ.\nTrân trọng!");
+                "Bạn vừa đăng ký thành công tài khoản trên leafapp." +
+                        "\nChân thành cảm ơn bạn đã quan tâm và sử dụng app. Chúc bạn ngày mới vui vẻ.\nTrân trọng!");
+        // gửi mail thông báo
         edtUsername.setText("");
         edtPassword.setText("");
         edtName.setText("");

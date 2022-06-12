@@ -31,9 +31,8 @@ import hcmute.edu.vn.leafnote.entity.Note;
 import hcmute.edu.vn.leafnote.entity.Users;
 
 public class RecordActivity extends AppCompatActivity {
-    private Button start, stop,  btnSaveAudio;
+    private Button start, stop, btnSaveAudio;
     private MediaRecorder myAudioRecorder;
-    private MediaPlayer mediaPlayer;
     private Chronometer timer;
     TextView txtThoat;
     EditText edtTitleAudio;
@@ -49,7 +48,7 @@ public class RecordActivity extends AppCompatActivity {
         AnhXa();
         stop.setEnabled(false);
         btnSaveAudio.setEnabled(false);
-        outputFile=getOutputFile();
+        outputFile = getOutputFile();
         startRecord();
         stopRecord();
 
@@ -67,7 +66,7 @@ public class RecordActivity extends AppCompatActivity {
         timer = (Chronometer) findViewById(R.id.record_timer);
     }
 
-    private String getOutputFile(){
+    private String getOutputFile() {
         File dir = new File(Environment.getExternalStorageDirectory(), "SaveAudio");
 
         if (!dir.exists()) {
@@ -89,7 +88,7 @@ public class RecordActivity extends AppCompatActivity {
                     myAudioRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
                     myAudioRecorder.setOutputFile(outputFile);
 
-                    timer.setBase(SystemClock.elapsedRealtime());
+                    timer.setBase(SystemClock.elapsedRealtime());// tạo timer
                     timer.start();
                     try {
                         myAudioRecorder.prepare();
@@ -126,41 +125,40 @@ public class RecordActivity extends AppCompatActivity {
 
     }
 
-
-    public void save(){
+    public void save() {
         btnSaveAudio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String title=edtTitleAudio.getText().toString().trim();
-                if(title.isEmpty()){
+                String title = edtTitleAudio.getText().toString().trim();// lấy title
+                if (title.isEmpty()) {
                     Toast.makeText(RecordActivity.this, "Vui lòng điền tiêu đề cho note", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                pref = getSharedPreferences("login", MODE_PRIVATE);
+                pref = getSharedPreferences("login", MODE_PRIVATE);// lấy share reference
                 timer.stop();
                 String username = pref.getString("username", "");
 
                 Users u = DatabaseConnection.getInstance(RecordActivity.this).userDao().FindUserByUserName(username);
 
-                Date date =new Date();
+                Date date = new Date();// tạo date ghi chú
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy", Locale.US);
                 SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm:ss", Locale.US);
-
-                Note note= new Note(u.getId(),3,title,outputFile,dateFormat.format(date), timeFormat.format(date), false);
-                DatabaseConnection.getInstance(RecordActivity.this).noteDao().insert(note);
+                // tạo note dạng audio
+                Note note = new Note(u.getId(), 3, title, outputFile, dateFormat.format(date), timeFormat.format(date), false);
+                DatabaseConnection.getInstance(RecordActivity.this).noteDao().insert(note);// lưu xuống database
                 Toast.makeText(RecordActivity.this, "Lưu bản record thành công", Toast.LENGTH_SHORT).show();
-                Intent intent=new Intent(RecordActivity.this,MainActivity.class);
+                Intent intent = new Intent(RecordActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }
         });
     }
 
-    private void exitRecord(){
+    private void exitRecord() {
         txtThoat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(RecordActivity.this,MainActivity.class);
+                Intent intent = new Intent(RecordActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

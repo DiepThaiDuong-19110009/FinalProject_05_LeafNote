@@ -47,8 +47,8 @@ public class CustomPhotoActivity extends AppCompatActivity {
 
         String username = pref.getString("username", "");
 
-        Users u = DatabaseConnection.getInstance(this).userDao().FindUserByUserName(username);
-
+        Users u = DatabaseConnection.getInstance(this).userDao().FindUserByUserName(username);// lấy user hiện tại
+        // lấy danh sách note dạng photo của user hiện tại
         List<Note> photolist = DatabaseConnection.getInstance(this).noteDao().getAllPhto(u.getId());
         adapter = new PhotoAdapter(this, R.layout.custom_photo, photolist);
         listView.setAdapter(adapter);
@@ -76,12 +76,13 @@ public class CustomPhotoActivity extends AppCompatActivity {
                 if (TextUtils.equals(search, "all")) {
                     displayPhoto();
                 } else {
-                    pref = getSharedPreferences("login", MODE_PRIVATE);
+                    pref = getSharedPreferences("login", MODE_PRIVATE);// lấy share reference
 
                     String username = pref.getString("username", "");
 
-                    Users u = DatabaseConnection.getInstance(CustomPhotoActivity.this).userDao().FindUserByUserName(username);
-                    List<Note> photolist= DatabaseConnection.getInstance(CustomPhotoActivity.this).noteDao().searchNotePhoto(search,u.getId());
+                    Users u = DatabaseConnection.getInstance(CustomPhotoActivity.this).userDao().FindUserByUserName(username);// lấy user hiện tại
+                    // lấy danh sách note dạng photo của user hiện tại theo từ khóa tìm kiếm
+                    List<Note> photolist = DatabaseConnection.getInstance(CustomPhotoActivity.this).noteDao().searchNotePhoto(search, u.getId());
                     adapter = new PhotoAdapter(CustomPhotoActivity.this, R.layout.custom_photo, photolist);
                     listView.setAdapter(adapter);
                 }

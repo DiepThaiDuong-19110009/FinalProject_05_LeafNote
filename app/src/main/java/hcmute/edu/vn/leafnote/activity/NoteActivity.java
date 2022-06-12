@@ -56,25 +56,25 @@ public class NoteActivity extends AppCompatActivity {
     }
 
     private void addNote() {
-        String title = edtTitle.getText().toString().trim();
-        String content = edtContent.getText().toString().trim();
+        String title = edtTitle.getText().toString().trim(); // lấy title
+        String content = edtContent.getText().toString().trim();// lấy content
 
         if (TextUtils.isEmpty(title)) {
             Toast.makeText(this, "Vui lòng nhập tiêu đề", Toast.LENGTH_SHORT).show();
             return;
         }
-        pref = getSharedPreferences("login", MODE_PRIVATE);
+        pref = getSharedPreferences("login", MODE_PRIVATE); // lấy share reference
 
         String username = pref.getString("username", "");
 
         Users u = DatabaseConnection.getInstance(this).userDao().FindUserByUserName(username);
 
-        Date date =new Date();
+        Date date =new Date(); // tạo date ghi chú
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy", Locale.US);
         SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm:ss", Locale.US);
-
+        // tạo ghi chú
         Note note = new Note(u.getId(),1, title, content, dateFormat.format(date), timeFormat.format(date), false);
-        DatabaseConnection.getInstance(this).noteDao().insert(note);
+        DatabaseConnection.getInstance(this).noteDao().insert(note);// lưu ghi chú xuống database
         Toast.makeText(this, "Ghi chú thành công", Toast.LENGTH_LONG).show();
         Intent intent = new Intent(NoteActivity.this, MainActivity.class);
         startActivity(intent);

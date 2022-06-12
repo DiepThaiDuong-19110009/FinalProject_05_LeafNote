@@ -41,7 +41,8 @@ public class ForgotActivity extends AppCompatActivity {
         btnForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = edtEmail.getText().toString().trim();
+                String email = edtEmail.getText().toString().trim();// lấy thông tin email
+                // kiểm tra email
                 if (email.isEmpty()) {
                     Toast.makeText(ForgotActivity.this, "Vui lòng nhập email", Toast.LENGTH_LONG).show();
                     return;
@@ -51,10 +52,10 @@ public class ForgotActivity extends AppCompatActivity {
                     Toast.makeText(ForgotActivity.this, "Email chưa chính xác. Vui lòng kiểm tra", Toast.LENGTH_SHORT).show();
                     return;
                 } else {
-                    String code = RandomString.randomPassword();
-                    JavaMail.sendMail(email, "Mã xác nhận", "Mật khẩu mới của bạn là: " + code);
+                    String code = RandomString.randomPassword();// chuỗi random làm password
+                    JavaMail.sendMail(email, "Mã xác nhận", "Mật khẩu mới của bạn là: " + code);// gửi mail
                     u.setPassword(code);
-                    DatabaseConnection.getInstance(ForgotActivity.this).userDao().update(u);
+                    DatabaseConnection.getInstance(ForgotActivity.this).userDao().update(u);// lưu password mới
                     Toast.makeText(ForgotActivity.this, "Mật khẩu mới của bạn đã được gửi. Vui lòng kiểm tra email"
                             , Toast.LENGTH_LONG).show();
 

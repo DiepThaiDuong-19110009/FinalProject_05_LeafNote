@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(MainActivity.this,LoginActivity.class));
             finish();
             return;
-        }
+        }// check khi đăng xuất
         setContentView(R.layout.activity_main);
 
         //Toast.makeText(this, s, Toast.LENGTH_SHORT).show();
@@ -116,20 +116,20 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setDanhSach() {
-        pref = getSharedPreferences("login", MODE_PRIVATE);
+        pref = getSharedPreferences("login", MODE_PRIVATE);// lấy share reference login
 
         String username = pref.getString("username", "");
 
         Users u = DatabaseConnection.getInstance(this).userDao().FindUserByUserName(username);
 
-        List<Note> listNote = DatabaseConnection.getInstance(this).noteDao().getLastRow(u.getId());
-        if (listNote.isEmpty()) {
+        List<Note> listNote = DatabaseConnection.getInstance(this).noteDao().getLastRow(u.getId());// lấy list note dạng text
+        if (listNote.isEmpty()) { // trường hợp rỗng
             txtTitle.setText("Chưa có nội dung");
             txtDate.setText("");
             txtTitle2.setText("Chưa có nội dung");
             txtDate2.setText("");
             txtSoLuong.setText("(0)");
-        } else if (listNote.size() < 2) {
+        } else if (listNote.size() < 2) { // trường hợp size<2
             txtTitle.setText(listNote.get(0).getTitle());
             txtDate.setText(listNote.get(0).getCreated_date());
             txtTitle2.setText("Chưa có nội dung");

@@ -33,15 +33,15 @@ public class ShowAllNotesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_all_notes);
         AnhXa();
-        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);
+        SharedPreferences pref = getSharedPreferences("login", MODE_PRIVATE);// lấy share reference login
 
         String username = pref.getString("username", "");
 
         Users u = DatabaseConnection.getInstance(this).userDao().FindUserByUserName(username);
 
-        List<Note> noteList = DatabaseConnection.getInstance(this).noteDao().getAllText(u.getId());
+        List<Note> noteList = DatabaseConnection.getInstance(this).noteDao().getAllText(u.getId());// lấy danh sách toàn bộ note theo userId
         NoteAdapter adapter = new NoteAdapter(ShowAllNotesActivity.this, R.layout.custom_note, noteList);
-        lvShowAllNote.setAdapter(adapter);
+        lvShowAllNote.setAdapter(adapter);// dùng custom adapter
 
         txtDone.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,12 +54,12 @@ public class ShowAllNotesActivity extends AppCompatActivity {
         btnTim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String search = edtTimKiem.getText().toString().trim();
+                String search = edtTimKiem.getText().toString().trim();// lấy key tìm kiếm
                 if (TextUtils.isEmpty(search)) {
                     Toast.makeText(ShowAllNotesActivity.this, "Vui lòng nhập từ khóa tìm kiếm", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (TextUtils.equals(search, "all")) {
+                if (TextUtils.equals(search, "all")) {// nếu từ khóa là all thì lấy hết danh sách ghi chú bằng note dạng text
                     lvShowAllNote.setAdapter(adapter);
                 } else {
                     List<Note> listSearch = DatabaseConnection.getInstance(ShowAllNotesActivity.this).noteDao().searchNote(search,u.getId());

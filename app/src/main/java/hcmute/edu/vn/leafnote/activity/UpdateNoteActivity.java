@@ -22,15 +22,15 @@ public class UpdateNoteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_note);
         addControl();
         Intent intent=getIntent();
-        Note note= (Note) intent.getSerializableExtra("note_key");
+        Note note= (Note) intent.getSerializableExtra("note_key");// get intent note_key
         edtTitle.setText(note.getTitle());
         edtContent.setText(note.getContent());
         saveNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                note.setTitle(edtTitle.getText().toString().trim());
-                note.setContent(edtContent.getText().toString().trim());
-                DatabaseConnection.getInstance(UpdateNoteActivity.this).noteDao().update(note);
+                note.setTitle(edtTitle.getText().toString().trim());// lấy title
+                note.setContent(edtContent.getText().toString().trim());// lấy content
+                DatabaseConnection.getInstance(UpdateNoteActivity.this).noteDao().update(note);// lưu note mới cập nhật xuống database
                 Toast.makeText(UpdateNoteActivity.this, "Cập nhật thành công", Toast.LENGTH_SHORT).show();
                 Intent intent =new Intent(UpdateNoteActivity.this,ShowAllNotesActivity.class);
                 startActivity(intent);

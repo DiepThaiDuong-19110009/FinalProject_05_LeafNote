@@ -7,11 +7,8 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
-import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
-
 
 public class JavaMail {
       public static boolean sendMail(String to, String subject, String text) {
@@ -20,8 +17,8 @@ public class JavaMail {
         props.put("mail.smtp.starttls.enable", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
-        String myAccountEmail="leafnote2022@gmail.com";
-        String password="kfwcsyymsqnrrvdn";
+        String myAccountEmail="leafnote2022@gmail.com";// tài khoản
+        String password="kfwcsyymsqnrrvdn";// mật khẩu ứng dụng
         Session session = Session.getInstance(props,
                 new Authenticator() {
             @Override
@@ -36,7 +33,7 @@ public class JavaMail {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject(subject);
             message.setText(text);
-            SendEmailExcution sendEmailExcution= new SendEmailExcution();
+            SendEmailExecution sendEmailExcution= new SendEmailExecution();
             sendEmailExcution.execute(message);
         } catch (MessagingException e) {
             return false;

@@ -93,7 +93,7 @@ public class PhotoAdapter extends BaseAdapter {
                 .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        DatabaseConnection.getInstance(activity).noteDao().delete(note);
+                        DatabaseConnection.getInstance(activity).noteDao().delete(note);// xóa note
                         Toast.makeText(activity, "Xóa ghi chú thành công", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(activity, CustomPhotoActivity.class);
                         activity.startActivity(intent);

@@ -18,13 +18,13 @@ public interface UserDao {
 
     @Query("SELECT * FROM users WHERE id =:id")
     List<Users> getUserById(int id);
-
+    // login
     @Query("SELECT * FROM users WHERE username =:name and password=:pass")
     Users Login(String name, String pass);
-
+    // tìm user theo username
     @Query("SELECT * FROM users WHERE username=:name")
     Users FindUserByUserName(String name);
-
+    // tìm user theo email
     @Query("SELECT * FROM users WHERE email=:email")
     Users FindUserByEmail(String email);
 

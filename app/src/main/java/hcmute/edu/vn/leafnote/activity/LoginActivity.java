@@ -26,7 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         AnhXa();
-        pref = getSharedPreferences("login",MODE_PRIVATE);
+        pref = getSharedPreferences("login",MODE_PRIVATE);// tên share reference: login
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,8 +50,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void Login() {
-        String username = edtUsername.getText().toString().trim();
-        String password = edtPassword.getText().toString().trim();
+        String username = edtUsername.getText().toString().trim();// lấy username
+        String password = edtPassword.getText().toString().trim();// lấy password
+        // kiểm tra logic
         if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Vui lòng điền đủ thông tin đăng nhập", Toast.LENGTH_SHORT).show();
             return;
@@ -68,14 +69,6 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         }
-    }
-
-    public void loginGoogle(View view) {
-        Toast.makeText(this, "Đăng nhập bằng Google", Toast.LENGTH_SHORT).show();
-    }
-
-    public void loginFacebook(View view) {
-        Toast.makeText(this, "Đăng nhập bằng Facebook", Toast.LENGTH_SHORT).show();
     }
 
     public void linkSignUp(View view) {

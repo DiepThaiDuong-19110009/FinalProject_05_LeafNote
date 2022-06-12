@@ -9,16 +9,25 @@ android {
         applicationId "hcmute.edu.vn.leafnote"
         minSdk 23
         targetSdk 32
-        versionCode 1
+        versionCode 2
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
         release {
+            crunchPngs false // or true
+
+            lintOptions {
+                checkReleaseBuilds false
+                abortOnError false
+            }
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
     compileOptions {
@@ -29,12 +38,7 @@ android {
 }
 
 dependencies {
-    implementation files('libs\\activation.jar')
-    implementation files('libs\\additionnal.jar')
-    implementation files('libs\\mail.jar')
-    implementation files('libs/activation.jar')
-    implementation files('libs\\commons-lang3-3.12.0.jar')
-    implementation files('libs\\commons-lang3-3.12.0.jar')
+
     //BottomSheet
     def room_version = "2.4.2"
 
@@ -54,6 +58,7 @@ dependencies {
     implementation files('libs/mail.jar')
     implementation files('libs/additionnal.jar')
     implementation files('libs/commons-lang3-3.12.0.jar')
+
     def lottieVersion = "4.2.2"
     implementation "com.airbnb.android:lottie:$lottieVersion"
 }

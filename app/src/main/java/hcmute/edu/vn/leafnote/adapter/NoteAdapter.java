@@ -26,9 +26,6 @@ public class NoteAdapter extends BaseAdapter {
     private int layout;
     List<Note> noteList;
 
-    public NoteAdapter() {
-    }
-
     public NoteAdapter(Activity activity, int layout, List<Note> noteList) {
         this.activity = activity;
         this.layout = layout;
@@ -75,15 +72,15 @@ public class NoteAdapter extends BaseAdapter {
             btnXoa = (Button) view.getTag(R.id.btnXoa);
             btnCapNhat = (Button) view.getTag(R.id.btnCapNhat);
         }
-        Note note = noteList.get(position);
-        edtTitle.setText(note.getTitle());
-        edtContent.setText(note.getContent());
-        txtDate.setText(note.getCreated_date()+ " "+note.getCreated_time());
+        Note note = noteList.get(position);// lấy vị trí note
+        edtTitle.setText(note.getTitle());// setText cho title
+        edtContent.setText(note.getContent());// setText cho content
+        txtDate.setText(note.getCreated_date()+ " "+note.getCreated_time());// setText cho date
         btnCapNhat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(activity, UpdateNoteActivity.class);
-                intent.putExtra("note_key", note);
+                intent.putExtra("note_key", note);// cập nhật note
                 activity.startActivityForResult(intent, 100);
             }
         });
@@ -104,7 +101,7 @@ public class NoteAdapter extends BaseAdapter {
                 .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        DatabaseConnection.getInstance(activity).noteDao().delete(note);
+                        DatabaseConnection.getInstance(activity).noteDao().delete(note);// xóa note
                         Toast.makeText(activity, "Xóa ghi chú thành công", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(activity, ShowAllNotesActivity.class);
                         activity.startActivity(intent);
